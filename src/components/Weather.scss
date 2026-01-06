@@ -3,7 +3,7 @@
 #weather-page {
   .weather {
     color: var(--color-font-sub);
-    @include flex-layout(row, center, center);
+    @include flex-layout(row, flex-start, center);
     img {
       width: 2rem;
       height: 2rem;
