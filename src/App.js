@@ -1,6 +1,12 @@
 import LoginPages from "./pages/LoginPages";
 import SignUpPages from "./pages/SignUpPages";
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  HashRouter,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import Layout from "./layout/Layout";
 import ParkingDashboard from "./pages/ParkingDashboard";
 import ResidentDashboard from "./pages/ResidentDashboard";

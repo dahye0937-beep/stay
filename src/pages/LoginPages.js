@@ -36,6 +36,19 @@ const LoginPages = () => {
       >
         회원가입
       </button>
+      <div>
+        <h2>임시 이동버튼</h2>
+        {/* 테스트용 역할별 이동 버튼 */}
+        <button onClick={() => navigate("/app/resident")}>
+          입주민 페이지로 이동
+        </button>
+        <button onClick={() => navigate("/app/business")}>
+          사업자 페이지로 이동
+        </button>
+        <button onClick={() => navigate("/app/admin")}>
+          관리자 페이지로 이동
+        </button>
+      </div>
     </div>
   );
 };
