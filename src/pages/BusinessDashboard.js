@@ -15,15 +15,6 @@ const BusinessDashboard = () => {
       <ParkingDashboard />
       <SystemController role="business" />
       <BannerSection />
-      <div className="favorite">
-        <button
-          onClick={() => {
-            navigate("/app/business/favorite");
-          }}
-        >
-          즐겨 찾는 차량
-        </button>
-      </div>
     </div>
   );
 };
