@@ -4,6 +4,7 @@ import ParkingDashboard from "./ParkingDashboard";
 import SystemController from "../components/SystemController";
 import BannerSection from "./BannerSection";
 import { useNavigate } from "react-router-dom";
+import './BusinessDashboard.scss'
 
 const BusinessDashboard = () => {
   const navigate = useNavigate();

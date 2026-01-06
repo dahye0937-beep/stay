@@ -12,6 +12,7 @@ import ResidentMypage from "./pages/ResidentMypage";
 import BusinessMypage from "./pages/BusinessMypage";
 import OkPage from "./pages/OkPage";
 import SalePage from "./pages/SalePage";
+import "./assets/scss/global.scss";
 
 const TempButtons = () => {
   const navigate = useNavigate();
