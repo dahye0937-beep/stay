@@ -1,0 +1,15 @@
+@use "../../assets/scss/mixin" as *;
+
+header {
+  .header-top {
+    @include flex-layout(row, space-between);
+    img {
+      height: 2.5rem;
+      cursor: pointer;
+    }
+  }
+  .mypage-icon {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}

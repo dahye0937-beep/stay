@@ -1,0 +1,1 @@
+// supabaseClient 불러와서 연결해서 사용
