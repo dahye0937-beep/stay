@@ -1,6 +1,6 @@
 import LoginPages from "./pages/LoginPages";
 import SignUpPages from "./pages/SignUpPages";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import Layout from "./layout/Layout";
 import ParkingDashboard from "./pages/ParkingDashboard";
 import ResidentDashboard from "./pages/ResidentDashboard";
@@ -17,7 +17,7 @@ import SalePage from "./pages/SalePage";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* 처음 로그인 화면 */}
         <Route path="/" element={<LoginPages />} />
@@ -47,7 +47,7 @@ const App = () => {
           <Route path="/app/admin/salepage" element={<SalePage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
