@@ -7,11 +7,11 @@ import ResidentDashboard from "./pages/ResidentDashboard";
 import BusinessDashboard from "./pages/BusinessDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import ResidentFav from "./pages/ResidentFav";
-import BusinessFav from "./pages/BusinessFav";
 import ResidentMypage from "./pages/ResidentMypage";
 import BusinessMypage from "./pages/BusinessMypage";
 import OkPage from "./pages/OkPage";
 import SalePage from "./pages/SalePage";
+import "./assets/scss/global.scss";
 
 const TempButtons = () => {
   const navigate = useNavigate();
@@ -55,7 +55,6 @@ const App = () => {
           {/* 사업자 페이지 */}
           <Route path="business">
             <Route index element={<BusinessDashboard />} />
-            <Route path="favorite" element={<BusinessFav />} />
             <Route path="mypage" element={<BusinessMypage />} />
           </Route>
 

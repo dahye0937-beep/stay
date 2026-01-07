@@ -4,13 +4,15 @@ import ParkingDashboard from "./ParkingDashboard";
 import SystemController from "../components/SystemController";
 import BannerSection from "./BannerSection";
 import { useNavigate } from "react-router-dom";
+import topImg from "../assets/images/Top/Intersect_PR.svg";
 
 const ResidentDashboard = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <h1>좋은하루</h1>
+    <section id="resident">
+      <img src={topImg} alt="상단 이미지" />
+      <h1>좋은 하루 보내삼</h1>
       <ParkingDashboard />
       <SystemController role="resident" />
       <BannerSection />
@@ -23,7 +25,7 @@ const ResidentDashboard = () => {
           즐겨 찾는 차량
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 
