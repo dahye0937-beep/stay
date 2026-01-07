@@ -6,6 +6,15 @@ $mobile: 375px;
     @content;
   }
 }
+//태블릿 기준 반응형
+$tablet-min: 768px;
+$tablet-max: 1439px;
+
+@mixin tablet {
+  @media all and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    @content;
+  }
+}
 
 //데스크탑 기준 반응형
 $desktop: 1440px;

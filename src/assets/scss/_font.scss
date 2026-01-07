@@ -26,6 +26,13 @@
   line-height: auto;
   color: var(--color-font);
 }
+@mixin font-s {
+  font-family: "Pretendard", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: auto;
+  color: var(--color-font);
+}
 
 //데스크탑 기준
 @mixin dt-font-header {
