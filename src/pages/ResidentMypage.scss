@@ -1,0 +1,143 @@
+@use "../assets/scss/mixin.scss" as *;
+@use "../assets/scss/variables.scss" as *;
+@use "../assets/scss/font.scss" as *;
+
+// 입주민 마이페이지
+.resident-mypage{
+    max-width: 375px;
+    margin: 0 auto;
+    padding: 16px;
+}
+//상단 카드
+.resident-card{
+    position: relative;
+    background-color: var(--color-main-1);
+    border-radius: 0 0 36px 36px;
+    padding: 24px 24px 90px;
+    color: #fff;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+    .brand-logo{
+        width: 54px;
+        margin-bottom: 20px;
+    }
+    //DB 연동 정보 영역
+    .mypage-info{
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        .role{
+            @include font-title;
+            color: #fff;
+        }
+        .address{
+            @include font-main;
+            opacity: 0.9;
+            color: #fff;
+        }
+        .car-number{
+            @include font-header;
+            color: #fff;
+        }
+        .parking{
+            width: 134px;
+            padding: 10px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 9px;
+            background-color: #fff;
+            color: #000;
+        }
+    }
+}
+// 카드 버튼
+.card-actions{
+    position: absolute;
+    left: 20px;
+    bottom: -28px;
+    display: flex;
+    gap: 10px;
+    button{
+        width: 100px;
+        height: 50px;
+        padding: 0;
+        @include flex-layout(center,center);
+        border-radius: 15px;
+        border: none;
+        font-size: 12px;
+        font-weight: 500;
+        background-color: #fff;
+        box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+        cursor: pointer;
+        transition:  transform 0.15s ease, box-shadow 0.15s ease;
+        &:hover{
+            transform: translateY(-1px);
+            box-shadow: 0 6px 6px rgba(0, 0, 0, 0.3);
+        }
+        &:active{
+            transform: translateY(0);
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+//메뉴 리스트
+.menu-list{
+    margin-top: 64px;
+    @include flex-layout(column, center,center);
+    button{
+        width: 100%;
+        max-width: 363px;
+        height: 50px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        background-color: #f2f2f2;
+        color: #000;
+        font-size: 16px;
+        font-weight: 600;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+        &:hover{
+            background-color: var(--color-main-1-hover);
+            color: #fff;
+        }
+    }
+}
+//로그아웃
+.logout-btn{
+    width: 128px;
+    height: 36px;
+    padding: 0;
+    margin: 24px 0 0 auto;
+    @include flex-layout(center,center);
+    border: none;
+    border-radius: 30px;
+    background-color: var(--color-main-1);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    &:hover{
+        background-color: var(--color-main-1-hover);
+        transform: translateY(-1px);
+    }
+}
+
+// 테블릿
+
+// 데스크탑
+@media (min-width: 1440px){
+    .resident-mypage{
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 32px 24px;
+        display: grid;
+        grid-template-columns: 1fr 420px 1fr;
+        column-gap: 32px;
+        align-items: start;
+    }
+    .resident-card,
+    .menu-list,
+    .logout-btn{
+        grid-column: 2;
+    }
+}
