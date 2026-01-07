@@ -10,6 +10,7 @@ import ResidentFav from "./pages/ResidentFav";
 import ResidentMypage from "./pages/ResidentMypage";
 import BusinessMypage from "./pages/BusinessMypage";
 import OkPage from "./pages/OkPage";
+import BoardPage from "./pages/BoardPage";
 import SalePage from "./pages/SalePage";
 import "./assets/scss/global.scss";
 
@@ -61,6 +62,7 @@ const App = () => {
           {/* 관리자 페이지 */}
           <Route path="admin">
             <Route index element={<AdminDashboard />} />
+            <Route path="board" element={<BoardPage />} />
             <Route path="okpage" element={<OkPage />} />
             <Route path="salepage" element={<SalePage />} />
           </Route>
