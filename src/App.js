@@ -44,13 +44,13 @@ const App = () => {
         <Route path="/signup" element={<SignUpPages />} />
         {/* 공통 Layout*/}
         <Route path="/app" element={<Layout />}>
-          <Route index element={<ParkingDashboard />} />
+          <Route index element={<ParkingDashboard />} /> 
 
           {/* 입주민 페이지 */}
           <Route path="resident">
             <Route index element={<ResidentDashboard />} />
             <Route path="favorite" element={<ResidentFav />} />
-            <Route path="mypage" element={<ResidentMypage />} />
+            <Route path="mypage" element={<ResidentMypage />} /> 
           </Route>
 
           {/* 사업자 페이지 */}
