@@ -4,7 +4,7 @@ import SystemController from "../components/SystemController";
 import BannerSection from "./BannerSection";
 import { useNavigate } from "react-router-dom";
 import Weather from "../components/Weather";
-import topImg from "../assets/images/Top/Intersect_PR.svg";
+import topImg from "../assets/images/Top/Intersect_PR.png";
 import "./ResidentDashboard.scss";
 
 const ResidentDashboard = () => {

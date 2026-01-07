@@ -1,7 +1,7 @@
 import SystemController from "../components/SystemController";
 import BannerSection from "./BannerSection";
 import "./BusinessDashboard.scss";
-import topImg from "../assets/images/Top/Intersect_OR.svg";
+import topImg from "../assets/images/Top/Intersect_OR.png";
 import Weather from "../components/Weather";
 
 const BusinessDashboard = () => {

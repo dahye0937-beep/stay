@@ -23,7 +23,7 @@ const AddCar = () => {
         />
       </div>{" "}
       <div className="input-group">
-        <label>방문 날짜</label>
+        <label>차량 명의자</label>
         <input
           type="차량 명의자"
           value={carName}

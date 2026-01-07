@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import "./Car.scss";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const SaleCar = () => {
   const [carNumber, setCarNumber] = useState(""); // 차량번호
@@ -25,12 +27,12 @@ const SaleCar = () => {
         />
       </div>
       <div className="input-group">
-        <label>방문 날짜</label>
-        <input
-          type="text"
-          value={visitDate}
-          placeholder="방문 날짜를 선택해주세요"
-          onChange={(e) => setVisitDate(e.target.value)}
+        <p>방문 날짜</p>
+        <DatePicker
+          selected={visitDate}
+          onChange={(date) => setVisitDate(date)}
+          placeholderText="방문 날짜를 선택해주세요"
+          dateFormat="yyyy.MM.dd"
         />
       </div>
       <div className="input-group">

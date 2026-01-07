@@ -1,11 +1,13 @@
 // --- 방문 차량 등록 ---
 
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "./Car.scss";
 
 const VisitCar = () => {
   const [carNumber, setCarNumber] = useState(""); // 차량번호
-  const [visitDate, setVisitDate] = useState(""); // 방문날짜
+  const [visitDate, setVisitDate] = useState(null); // 방문날짜 (Date 객체)
   const [reason, setReason] = useState(""); // 방문사유
 
   // 새로고침 방지
@@ -16,7 +18,7 @@ const VisitCar = () => {
   return (
     <form className="visit-form" onSubmit={handleSubmit}>
       <div className="input-group">
-        <label>차량번호</label>
+        <label>차량 번호</label>
         <input
           type="text"
           value={carNumber}
@@ -24,15 +26,17 @@ const VisitCar = () => {
           onChange={(e) => setCarNumber(e.target.value)}
         />
       </div>
+
       <div className="input-group">
-        <label>방문 날짜</label>
-        <input
-          type="text"
-          value={visitDate}
-          placeholder="방문 날짜를 선택해주세요"
-          onChange={(e) => setVisitDate(e.target.value)}
+        <p>방문 날짜</p>
+        <DatePicker
+          selected={visitDate}
+          onChange={(date) => setVisitDate(date)}
+          placeholderText="방문 날짜를 선택해주세요"
+          dateFormat="yyyy.MM.dd"
         />
       </div>
+
       <div className="input-group">
         <label>방문 사유 * 장기 등록 시에만 적어주세요</label>
         <input
@@ -42,6 +46,7 @@ const VisitCar = () => {
           onChange={(e) => setReason(e.target.value)}
         />
       </div>
+
       <div className="btn">
         <button>차량 등록</button>
       </div>

@@ -2,11 +2,14 @@
 @use "../assets/scss/font" as *;
 
 #banner {
+  width: 90%;
   @include flex-layout(column, center, center, 0.5rem);
   img {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-  max-width: 375px;
-
+    @include tablet {
+      max-width: 530px;
+    }
+    max-width: 530px;
   }
 }
