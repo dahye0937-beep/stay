@@ -2,7 +2,6 @@ import { HashRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Layout from "./layout/Layout";
 import LoginPages from "./pages/LoginPages";
 import SignUpPages from "./pages/SignUpPages";
-import ParkingDashboard from "./pages/ParkingDashboard";
 import ResidentDashboard from "./pages/ResidentDashboard";
 import BusinessDashboard from "./pages/BusinessDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -36,15 +35,12 @@ const App = () => {
   return (
     <HashRouter>
       {/* 임시버튼 */}
-      <TempButtons />
       <Routes>
         {/* 로그인 / 회원가입 페이지 */}
         <Route path="/" element={<LoginPages />} />
         <Route path="/signup" element={<SignUpPages />} />
         {/* 공통 Layout*/}
         <Route path="/app" element={<Layout />}>
-          <Route index element={<ParkingDashboard />} />
-
           {/* 입주민 페이지 */}
           <Route path="resident">
             <Route index element={<ResidentDashboard />} />
@@ -66,6 +62,7 @@ const App = () => {
           </Route>
         </Route>
       </Routes>
+      <TempButtons />
     </HashRouter>
   );
 };

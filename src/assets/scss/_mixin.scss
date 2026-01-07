@@ -1,6 +1,5 @@
 // 모바일 기준 반응형
 $mobile: 375px;
-
 @mixin mobile {
   @media all and (max-width: $mobile) {
     @content;
@@ -11,6 +10,14 @@ $mobile: 375px;
 $desktop: 1440px;
 @mixin desktop {
   @media all and (min-width: $desktop) {
+    @content;
+  }
+}
+
+//태블릿 기준 반응형
+$tablet: 768px;
+@mixin tablet {
+  @media all and (min-width: $tablet) {
     @content;
   }
 }

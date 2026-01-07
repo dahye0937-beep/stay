@@ -72,11 +72,11 @@ const Weather = () => {
           <div className="top">
             {/* 날씨 정보 */}
             <p>{weather.weather[0].description}</p>
-          <div className="title">
-            {/* 날씨 온도 */}
-            <p>최고: {weather.main.temp_max.toFixed(1)}℃</p>
-            <p>최저: {weather.main.temp_min.toFixed(1)}℃</p>
-          </div>
+            <div className="title">
+              {/* 날씨 온도 */}
+              <p>최고: {weather.main.temp_max.toFixed(1)}℃</p>
+              <p>최저: {weather.main.temp_min.toFixed(1)}℃</p>
+            </div>
           </div>
         </div>
       )}

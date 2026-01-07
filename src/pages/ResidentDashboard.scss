@@ -1,5 +1,54 @@
+@use "../assets/scss/mixin" as *;
+@use "../assets/scss/font" as *;
+
 #resident {
-  img {
-    z-index: -1;
+  width: 100%;
+  @include flex-layout(column, center, center, 0);
+  .resident-top {
+    width: 100%;
+    max-width: 375px;
+    padding-bottom: 3rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    > img {
+      width: 100%;
+      display: block;
+    }
+    .resident-txt {
+      @include flex-layout(column, center, flex-start, 0.5rem);
+      position: absolute;
+      top: 50%;
+      left: 1.5rem;
+      transform: translateY(-50%);
+      z-index: 2;
+      color: #fff;
+
+      h2 {
+        @include font-header();
+        color: #fff;
+      }
+      > p {
+        @include font-main();
+        color: #fff;
+      }
+    }
+  }
+  .favorite {
+    @include flex-layout();
+    button {
+      cursor: pointer;
+      transition: 0.3s;
+      @include font-medium();
+      background-color: var(--color-main-1);
+      color: #fff;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 1.875rem;
+      &:hover {
+        background-color: var(--color-main-1-hover);
+      }
+    }
   }
 }

@@ -1,0 +1,33 @@
+@use "../assets/scss/mixin" as *;
+
+#controller {
+  max-width: 375px;
+
+  padding-bottom: 1.5rem;
+  @include flex-layout(column, $gap: 0);
+  width: 90%;
+  margin: 0 auto;
+  .btn-wrap {
+    @include flex-layout($gap: 0.5rem);
+    width: 100%;
+    button {
+      width: 100%;
+      font-size: 0.625rem;
+      font-weight: 400;
+      border: none;
+      padding: 0.6rem 1rem;
+      letter-spacing: -0.2px;
+      border-radius: 1rem 1rem 0 0;
+      background-color: #d9d9d9;
+      cursor: pointer;
+      transition: 0.3s;
+      &.active {
+        background-color: #f7f7f7;
+      }
+    }
+  }
+  .mode-content {
+    width: 100%;
+    @include flex-layout();
+  }
+}
