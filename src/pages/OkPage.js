@@ -1,7 +1,6 @@
 // --- 승인 요청 리스트 페이지
 import OkpageCards from "./OkpageCards";
 import "./okpagecard.scss"
-import Logo from "../assets/images/Logo/EGWH_logo.png";
 
 
 const OkPage = () => {
@@ -83,7 +82,6 @@ const OkPage = () => {
 
     return (
         <div className="okpage">
-          <img src={Logo} alt="로고" className="logo" />
             <h1>승인 요청 리스트</h1>
             <OkpageCards list={approvalList} />
         </div>

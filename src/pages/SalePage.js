@@ -1,6 +1,5 @@
 // --- 상가 정산 리스트 ---
 import SalePageCards from "./SalePageCards";
-import Logo from "../assets/images/Logo/EGWH_logo.png";
 import "./salepage.scss";
 
 const SalePage = () => {
@@ -73,7 +72,6 @@ const SalePage = () => {
 
     return (
         <div className="salepage">
-            <img src={Logo} alt="로고" className="logo" />
             <h1>상가 정산 리스트</h1>
             <SalePageCards list={settlementList} />
         </div>

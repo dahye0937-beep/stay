@@ -47,6 +47,7 @@ const App = () => {
             <Route index element={<ResidentDashboard />} />
             <Route path="favorite" element={<ResidentFav />} />
             <Route path="mypage" element={<ResidentMypage />} />
+            <Route path="visited" element={<Visited role="resident" />} />
           </Route>
 
                     {/* 사업자 페이지 */}

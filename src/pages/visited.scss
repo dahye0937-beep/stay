@@ -34,27 +34,27 @@
         font-weight: 600;
         color: var(--color-bg);
     }
-    
 }
-.visited-card:hover{
+.visited-card:hover {
     transform: translateY(-4px);
 }
 
 .visited-page {
     // 밑 바탕
     overflow: hidden;
-    width: 375px;
+    width: 100%;
     height: 80vh;
     border-radius: 0 0 3rem 3rem;
     background-color: var(--color-main-3);
     margin: 0 auto; // 가운데 정렬
     color: var(--color-bg);
-    > h2{
-        padding: 1rem 0 1rem 2rem;
+    padding: 1rem;
+    > h2 {
+        padding: 4rem 0 1rem 2rem;
         @include font-header;
         color: var(--color-bg);
     }
-    >p{
+    > p {
         padding: 0 0 0 2rem;
         margin-top: -10px;
     }
@@ -62,7 +62,8 @@
 
 .star {
     position: absolute;
-    transform: translateX(285px) translateY(7px);
+    right: 16px;
+    top: 10%;
     width: 28px;
     height: 28px;
     color: var(--color-main-1);
