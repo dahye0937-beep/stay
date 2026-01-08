@@ -27,7 +27,10 @@ const AdminDashboard = () => {
     const endMinutes = String(end.getMinutes()).padStart(2, "0");
     setEndTime(`${endHours}:${endMinutes}`);
   };
-
+ //로그아웃 처리
+  const handleout = ()=>{
+    navigate("/");
+  };
   return (
     <div className="desktop">
       <div className="admin-dashboard">
@@ -99,6 +102,7 @@ const AdminDashboard = () => {
             상가 할인권 정산 목록
           </button>
         </section>
+         {/* 로그아웃 버튼 */} <button className="logout-btn" onClick={handleout}>로그아웃</button>
       </div>
     </div>
   );
