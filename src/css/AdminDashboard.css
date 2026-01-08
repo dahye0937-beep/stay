@@ -1,0 +1,279 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+:root {
+  --color-main-1: #423665;
+  --color-main-1-hover: #2d283d;
+  --color-main-2: #ff7c1f;
+  --color-main-2-hover: #d0600f;
+  --color-main-3: #5bb299;
+  --color-main-3-hover: #45a388;
+  --color-main-4-hover: #438572;
+  --color-sub-1: #c5c3d4;
+  --color-sub-2: #a295c7;
+  --color-bg: #f7f7f7;
+  --color-bg-2: #d9d9d9;
+  --color-bg-3: #c2c2c2;
+  --color-font: #2a2a2a;
+  --color-font-sub: #adadad;
+  --color-font-white:#ffffff;
+  --color-font-black:#000000;
+}
+
+:root {
+  --color-main-1: #423665;
+  --color-main-1-hover: #2d283d;
+  --color-main-2: #ff7c1f;
+  --color-main-2-hover: #d0600f;
+  --color-main-3: #5bb299;
+  --color-main-3-hover: #45a388;
+  --color-main-4-hover: #438572;
+  --color-sub-1: #c5c3d4;
+  --color-sub-2: #a295c7;
+  --color-bg: #f7f7f7;
+  --color-bg-2: #d9d9d9;
+  --color-bg-3: #c2c2c2;
+  --color-font: #2a2a2a;
+  --color-font-sub: #adadad;
+  --color-font-white:#ffffff;
+  --color-font-black:#000000;
+}
+
+.desktop {
+  width: 100%;
+}
+.desktop .admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+@media all and (min-width: 1440px) {
+  .desktop .admin-dashboard {
+    margin: 0 auto;
+    padding-bottom: 20rem;
+    display: flex;
+    border: 3px solid var(--color-bg-2);
+  }
+}
+.desktop .admin-dashboard .card {
+  background: var(--color-main-3);
+  border-radius: 0 0 30px 30px;
+  padding: 2rem 1rem;
+  color: var(--color-font-black);
+  position: relative;
+  z-index: 5;
+}
+@media all and (min-width: 768px) {
+  .desktop .admin-dashboard .card {
+    background: none;
+  }
+}
+.desktop .admin-dashboard .card .admin-box {
+  position: relative;
+}
+.desktop .admin-dashboard .card .admin-box .admin {
+  width: 100px;
+  height: 100px;
+  border-radius: 30%;
+  border: 3px solid var(--color-font-white);
+  position: absolute;
+  bottom: 50%;
+  left: 64%;
+}
+@media all and (min-width: 768px) {
+  .desktop .admin-dashboard .card .admin-box .admin {
+    bottom: 50%;
+    left: 74%;
+    border: 3px solid var(--color-main-3);
+  }
+}
+@media all and (min-width: 1440px) {
+  .desktop .admin-dashboard .card .admin-box .admin {
+    bottom: 50%;
+    left: 64%;
+  }
+}
+.desktop .admin-dashboard .card .admin-box .admin-info {
+  background-color: var(--color-font-white);
+  box-shadow: 0 1px 10px var(--color-main-3-hover);
+  padding: 0.5rem 2rem;
+  border-radius: 15px;
+}
+@media all and (min-width: 768px) {
+  .desktop .admin-dashboard .card .admin-box .admin-info {
+    background-color: var(--color-main-3);
+    box-shadow: none;
+  }
+}
+.desktop .admin-dashboard .card .admin-box .admin-info .admin-name {
+  margin: 0.3rem 0;
+  font-weight: bold;
+  font-family: "Pretendard", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: auto;
+  color: var(--color-font);
+}
+.desktop .admin-dashboard .card .admin-box .admin-info .time {
+  font-family: "Pretendard", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: auto;
+  color: var(--color-font);
+  opacity: 0.9;
+}
+.desktop .admin-dashboard .card .admin-box .admin-info button {
+  padding: 0.3rem 1rem;
+  border-radius: 10px;
+  border: none;
+  margin: 1rem 0;
+  cursor: pointer;
+  font-family: "Pretendard", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: auto;
+  color: var(--color-font);
+}
+.desktop .admin-dashboard .card .admin-box .admin-info .btn-gray {
+  margin-right: 0.5rem;
+}
+.desktop .admin-dashboard .card .admin-box .admin-info .btn-gray:hover {
+  background-color: var(--color-bg-3);
+}
+.desktop .admin-dashboard .card .admin-box .admin-info .btn-green {
+  background: var(--color-main-3);
+  color: var(--color-font-white);
+}
+.desktop .admin-dashboard .card .admin-box .admin-info .btn-green:hover {
+  background-color: var(--color-main-3-hover);
+}
+@media all and (min-width: 768px) {
+  .desktop .admin-dashboard .card .admin-box .admin-info .btn-green {
+    background: var(--color-main-3-hover);
+  }
+  .desktop .admin-dashboard .card .admin-box .admin-info .btn-green:hover {
+    background: var(--color-main-4-hover);
+  }
+}
+.desktop .admin-dashboard .admin-header {
+  padding: 1rem;
+}
+.desktop .admin-dashboard .admin-header .top-text {
+  color: var(--color-font-white);
+}
+.desktop .admin-dashboard .admin-header .top-text .role {
+  font-family: "Pretendard", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: auto;
+  color: var(--color-font);
+  font-weight: bolder;
+  color: var(--color-font-white);
+}
+@media all and (min-width: 768px) {
+  .desktop .admin-dashboard .admin-header {
+    top: -27%;
+    right: 78%;
+    gap: 1rem;
+  }
+  .desktop .admin-dashboard .admin-header img {
+    display: none;
+  }
+  .desktop .admin-dashboard .admin-header .top-text {
+    color: var(--color-font-black);
+    font-weight: bolder;
+  }
+  .desktop .admin-dashboard .admin-header .top-text .role {
+    color: var(--color-font-black);
+  }
+}
+.desktop .menu {
+  display: flex;
+  gap: 1rem;
+  border-radius: 24px;
+  padding: 1.2rem;
+  margin-top: -20px;
+  position: relative;
+  z-index: 5;
+}
+.desktop .menu .menu-card {
+  margin-top: -20px;
+  flex: 1;
+  background: var(--color-font-white);
+  border-radius: 16px;
+  padding: 1rem;
+  border: none;
+  text-align: left;
+  box-shadow: 0 3px 8px var(--color-bg-3);
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out;
+}
+.desktop .menu .menu-card:hover {
+  background-color: var(--color-bg);
+  transform: scale(1.03);
+}
+.desktop .menu .menu-card h3 {
+  margin: 0 0 0.3rem;
+  font-family: "Pretendard", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: auto;
+  color: var(--color-font);
+  text-align: left;
+  font-weight: bolder;
+}
+.desktop .menu .menu-card:nth-child(2) h3 {
+  margin: -1rem 0 0.3rem;
+}
+@media all and (min-width: 768px) {
+  .desktop .menu .menu-card:nth-child(2) h3 {
+    margin: -0.2rem 0 0.3rem;
+  }
+}
+.desktop .menu .menu-card p {
+  margin: 0;
+  font-family: "Pretendard", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: auto;
+  color: var(--color-font);
+}
+.desktop .extra {
+  background: var(--color-font-white);
+  padding: 1.2rem;
+  margin-top: -20px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.desktop .extra button {
+  padding: 0.9rem;
+  border-radius: 14px;
+  border: none;
+  font-family: "Pretendard", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: auto;
+  color: var(--color-font);
+  font-weight: bolder;
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out;
+}
+.desktop .extra button:hover {
+  background-color: var(--color-main-3-hover);
+  color: var(--color-font-white);
+  transform: scale(1.03);
+}
+.desktop .logout-btn {
+  padding: 0.5rem 2.5rem;
+  border-radius: 20px;
+  border: none;
+  background: var(--color-main-3);
+  color: var(--color-font-white);
+  align-self: flex-end;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+.desktop .logout-btn:hover {
+  background-color: var(--color-main-3-hover);
+}/*# sourceMappingURL=AdminDashboard.css.map */

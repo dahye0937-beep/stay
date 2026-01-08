@@ -199,28 +199,6 @@
       }
     }
   }
-  footer {
-    opacity: 0;
-    position: absolute;
-    right: 102.1%;
-    top: 71%;
-    @include font.font-s;
-    background-color: var(--color-main-3);
-    width: 184px;
-    height: 186px;
-    text-align: left;
-    padding: 1rem;
-    p {
-      color: var(--color-font-white);
-    }
-    .txt-top {
-      margin: 1.3rem 0;
-    }
-    @include desktop {
-      opacity: 1;
-    }
-  }
-
   //로그아웃
   .logout-btn {
     padding: 0.5rem 2.5rem;

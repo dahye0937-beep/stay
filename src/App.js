@@ -44,21 +44,18 @@ const App = () => {
         <Route path="/signup" element={<SignUpPages />} />
         {/* 공통 Layout*/}
         <Route path="/app" element={<Layout />}>
-          {/* <Route index element={<ParkingDashboard />} />  */}
 
           {/* 입주민 페이지 */}
           <Route path="resident">
             <Route index element={<ResidentDashboard />} />
             <Route path="favorite" element={<ResidentFav />} />
             <Route path="mypage" element={<ResidentMypage />} />
-            <Route path="visited" element={<Visited role="resident" />} />
           </Route>
 
                     {/* 사업자 페이지 */}
                     <Route path="business">
                         <Route index element={<BusinessDashboard />} />
                         <Route path="mypage" element={<BusinessMypage />} />
-                        <Route path="visited" element={<Visited role="business" />} />
                     </Route>
 
           {/* 관리자 페이지 */}
