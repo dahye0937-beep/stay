@@ -11,6 +11,7 @@ import banner6 from "../assets/images/Banner/MB_Banner_cafe.jpg";
 
 const BannerSection = () => {
   const banners = [banner1, banner2, banner3, banner4, banner5, banner6];
+  
 
   // --- 모바일 ---
 
