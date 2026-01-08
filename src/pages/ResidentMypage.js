@@ -2,6 +2,7 @@
 
 import { useNavigate } from "react-router-dom";
 import EGWHLogo from "../assets/images/Logo/EGWH_logo.png";
+import DesktopLogo from "../assets/images/Logo/logo-2.png";
 import "./ResidentMypage.scss";
 
 const ResidentMypage = () => {
@@ -17,6 +18,10 @@ const ResidentMypage = () => {
 
   return (
     <div className="resident-mypage">
+      {/* 데스크탑 로고 */}
+      <div className="r-logo">
+        <img src={DesktopLogo} alt="EGWH 데스크탑 로고" />
+      </div>
       {/* 상단 카드 */}
       <section className="resident-card">
         <img  src= {EGWHLogo} alt="EGWH 로고" className="brand-logo"/>

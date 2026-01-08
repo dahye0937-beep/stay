@@ -6,34 +6,58 @@ import VisitCar from "./mode/VisitCar";
 import LongCar from "./mode/LongCar";
 import SaleCar from "./mode/SaleCar";
 import SaleCarIssue from "./mode/SaleCarIssue";
+import "./SystemController.scss";
 
 const SystemController = ({ role }) => {
-  const [mode, setMode] = useState("");
+  const initialMode = role === "resident" ? "VISITCAR" : "SALECAR";
+  const [mode, setMode] = useState(initialMode);
 
   return (
-    <div className="controller">
+    <section id="controller">
       <div className="btn-wrap">
-        {/* 입주민 */}
         {role === "resident" && (
           <>
-            <button onClick={() => setMode("VISITCAR")}>
+            <button
+              className={mode === "VISITCAR" ? "active" : ""}
+              onClick={() => setMode("VISITCAR")}
+            >
               방문 차량 등록 신청
             </button>
-            <button onClick={() => setMode("LONGCAR")}>
+            <button
+              className={mode === "LONGCAR" ? "active" : ""}
+              onClick={() => setMode("LONGCAR")}
+            >
               장기 차량 등록 신청
             </button>
-            <button onClick={() => setMode("ADD")}>추가 차량 등록 신청</button>
+            <button
+              className={mode === "ADD" ? "active" : ""}
+              onClick={() => setMode("ADD")}
+            >
+              추가 차량 등록 신청
+            </button>
           </>
         )}
 
-        {/* 사업자 */}
         {role === "business" && (
           <>
-            <button onClick={() => setMode("SALECAR")}>주차 할인권 발급</button>
-            <button onClick={() => setMode("SALECARISSUE")}>
+            <button
+              className={mode === "SALECAR" ? "active" : ""}
+              onClick={() => setMode("SALECAR")}
+            >
+              주차 할인권 발급
+            </button>
+            <button
+              className={mode === "SALECARISSUE" ? "active" : ""}
+              onClick={() => setMode("SALECARISSUE")}
+            >
               주차 할인권 정산
             </button>
-            <button onClick={() => setMode("ADD")}>추가 차량 등록 신청</button>
+            <button
+              className={mode === "ADD" ? "active" : ""}
+              onClick={() => setMode("ADD")}
+            >
+              추가 차량 등록 신청
+            </button>
           </>
         )}
       </div>
@@ -45,8 +69,7 @@ const SystemController = ({ role }) => {
         {mode === "SALECAR" && <SaleCar />}
         {mode === "SALECARISSUE" && <SaleCarIssue />}
       </div>
-    </div>
+    </section>
   );
 };
-
 export default SystemController;

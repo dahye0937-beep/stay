@@ -3,13 +3,14 @@
 import { useNavigate } from "react-router-dom";
 import "./BusinessMypage.scss";
 import Staylogo from "../assets/images/Logo/EGWH_logo.png";
+import DesktopLogo from "../assets/images/Logo/logo-2.png";
 
 const BusinessMypage = () => {
   const navigate = useNavigate();
   const mypageData = {
     role: "사업자",
     building: "0000",
-    nuit: "0000",
+    unit: "0000",
     name: "온담 감자탕",
     carNumber: "12가3456",
     parkingLocation: "A1-6번",
@@ -17,6 +18,10 @@ const BusinessMypage = () => {
 
   return (
     <div className="business-mypage">
+      {/* 데스크탑 로고 */}
+      <div className="b-logo">
+        <img src={DesktopLogo} alt="EGWH 데스크탑 로고" />
+      </div>
       {/* 상단 카드 */}
       <section className="business-card">
         <img src={Staylogo} alt="EGWH 로고" className="stay-logo" />

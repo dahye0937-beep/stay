@@ -7,7 +7,7 @@
     position: relative;
     display: flex;
     padding: 16px 48px 16px 16px;
-    height: 180px;
+    height: 75px;
     border-radius: 32px;
     background-color: var(--color-sub-2);
     overflow: hidden;
@@ -27,30 +27,7 @@
         padding: 0.18rem;
         > p {
             @include font-header;
-            margin-top: 0.5rem;
-            color: var(--color-bg);
-        }
-    }
-    .status {
-        @include font-main;
-        padding: 0.5rem 1rem;
-        width: fit-content;
-        border: 2px solid rgb(255, 255, 255);
-        border-radius: 1.5rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--color-bg);
-    }
-    .time {
-        margin-top: 1rem;
-        border: 2px solid rgb(255, 255, 255);
-        padding: 0.5rem 2rem;
-        border-radius: 1.5rem;
-        p {
-            @include dt-font-main;
-            font-size: 14px;
-            font-weight: 300;
+            // margin-top: 0.5rem;
             color: var(--color-bg);
         }
     }
