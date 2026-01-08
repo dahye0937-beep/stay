@@ -1,0 +1,105 @@
+@use '../assets/scss/variables' as * ;
+@use '../assets/scss/font' as *;
+
+.spot-card{
+  width: 120px;
+  height: 140px;
+  background-color: #B6ADD0;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
+
+.carnum{
+  background-color: tomato;
+}
+
+.spot-card.paid{
+  background-color: #ff9494;
+}
+
+.parking{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.all_box{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  p{
+    text-align: center;
+  }
+  .R_box{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-radius: 2rem;
+    text-align: center;
+  }
+  .S_box{
+    width: 40%;
+    height: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-radius: 2rem;
+  }
+  // .color_box{
+  //     .r{
+  //       display: flex;
+  //       align-items: center;
+  //       flex-direction: column;
+  //       div{
+  //       width: 20px;
+  //       height:20px;
+  //       background-color: #B6ADD0;
+  //       }
+  //     }
+  //     .v{        
+  //       display: flex;
+  //       align-items: center;
+  //       flex-direction: column;
+  //       div{
+  //       width: 20px;
+  //       height:20px;
+  //       background-color: tomato;
+  //       }
+  //     }
+  //     .l{
+  //       display: flex;
+  //       align-items: center;
+  //       flex-direction: column;        
+  //       div{
+  //       width: 20px;
+  //       height:20px;
+  //       background-color: #B6ADD0;
+  //       }
+  //     }
+  //   }
+}
+.info-p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+  p{
+    @include font-title 
+  }
+}
+
+
+
