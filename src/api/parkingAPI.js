@@ -1,5 +1,5 @@
 // supabaseClient 불러와서 연결해서 사용
-import { supabase } from "../supabaseClient";
+import { supabase } from "./supabaseClient";
 
 /**
  * ✅ 현황판 전체 조회 (APT + STORE 한 번에)
@@ -11,7 +11,6 @@ export const fetchParkingSpots = async () => {
         .select("spot_id, zone, is_occupied, occupant_car, updated_at")
         .order("zone", { ascending: true })      // APT / STORE 정렬
         .order("spot_id", { ascending: true });  // A-1, A-2 ... 순서
-
     if (error) throw error;
     return data; // [{spot_id, zone, is_occupied, occupant_car, updated_at}, ...]
 };

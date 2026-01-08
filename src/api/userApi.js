@@ -1,6 +1,18 @@
-//로그인페이지(메인)
 import { supabase } from "./supabaseClient";
 
+/* =====================================================
+로그인 / 회원가입
+===================================================== */
+
+/**
+ * ✅ [로그인 페이지]
+ * - 아이디/비밀번호 로그인
+ * - 승인 안 된 계정은 PENDING 반환
+ *
+ * ✅ 사용 예시
+ * const res = await loginProfile(loginId, password);
+ * if (res.status === "OK") setProfile(res.profile);
+ */
 export const loginProfile = async (loginId, password) => {
     const { data, error } = await supabase
         .from("profiles")
@@ -10,72 +22,61 @@ export const loginProfile = async (loginId, password) => {
 
     if (error) throw error;
     if (!data) throw new Error("아이디가 없습니다.");
-
-    if (data.password !== password) {
-        throw new Error("비밀번호가 틀렸습니다.");
-    }
+    if (data.password !== password) throw new Error("비밀번호가 틀렸습니다.");
 
     if (!data.is_approved) {
-        return {
-        status: "PENDING",
-        message: "관리자 승인 대기 중입니다.",
-        };
+        return { status: "PENDING", message: "관리자 승인 대기 중입니다." };
     }
 
-    return {
-        status: "OK",
-        profile: data,
-    };
+    return { status: "OK", profile: data };
 };
 
-// 회원가입(승인요청)페이지
+/**
+ * ✅ [회원가입 페이지]
+ * - 가입만 진행 (관리자 승인 필요)
+ *
+ * ✅ 사용 예시
+ * await signupProfile(formData);
+ */
 export const signupProfile = async (form) => {
-  // form: { loginId, password, userName, userType, carNum, dongHo }
     const { error } = await supabase.from("profiles").insert([
         {
         login_id: form.loginId,
         password: form.password,
         user_name: form.userName,
-        user_type: form.userType, // "APT" or "STORE"
+        user_type: form.userType, // "APT" | "STORE"
         car_num: form.carNum,
         dong_ho: form.dongHo,
-        // add_car: 기본 null
-        // is_approved: 기본 false
-        // created_at: 기본 now()
         },
     ]);
+
     if (error) throw error;
-    return { status: "OK" }; // 가입 완료(승인대기)
-};
+    return true;
+    };
 
+/* =====================================================
+공통 헤더
+===================================================== */
 
-//공통 헤더 
 /**
- * ✅ 모든 헤더 공용 API (입주민/상가 + 마이페이지 포함)
- * 반환:
- * - user_type: 'APT' | 'STORE'
- * - role_label: '입주자' | '사업자'
- * - dong_ho
- * - user_name (상가명/사용자이름)
- * - current_spot (없으면 null)
+ * ✅ [모든 페이지 상단 헤더]
+ * - 사용자 정보 + 현재 주차 위치
+ *
+ * ✅ 사용 예시
+ * const header = await fetchHeaderBundle(profile.id);
  */
 export const fetchHeaderBundle = async (profileId) => {
-  // 1) 기본정보
-    const { data: profile, error: pErr } = await supabase
+    const { data: profile } = await supabase
         .from("profiles")
         .select("user_type, dong_ho, user_name, car_num")
         .eq("id", profileId)
         .single();
-    if (pErr) throw pErr;
-
-  // 2) 현재 주차 위치(없을 수 있음)
-    const { data: spot, error: sErr } = await supabase
+        const { data: spot } = await supabase
         .from("parking_spots")
         .select("spot_id")
         .eq("occupant_car", profile.car_num)
         .eq("is_occupied", true)
         .maybeSingle();
-    if (sErr) throw sErr;
     return {
         user_type: profile.user_type,
         role_label: profile.user_type === "APT" ? "입주자" : "사업자",
@@ -85,143 +86,186 @@ export const fetchHeaderBundle = async (profileId) => {
     };
 };
 
+/* =====================================================
+입주민 - 방문 차량 등록
+===================================================== */
 
-
-
-// 입주민 페이지 -방문차량 등록(당일: DAILY)
-export const createDailyReservation =async ({ profileId, carNum, dateISO }) => {
-    const payload = {
-    profile_id: profileId,
-    car_num: carNum,
-    visit_type:"DAILY",
-    start_date: dateISO,
-    end_date: dateISO
-    };
-const { error } =await supabase.from("parking_reservations").insert([payload]);
-if (error)throw error;
-returntrue;
+/**
+ * ✅ [입주민 방문차량 등록 페이지]
+ * - 당일 방문 차량
+ *
+ * ✅ 사용 예시
+ * await createDailyReservation({
+ *   profileId: profile.id,
+ *   carNum: "12가3456",
+ *   dateISO: "2026-01-10"
+ * });
+ */
+export const createDailyReservation = async ({ profileId, carNum, dateISO }) => {
+    const { error } = await supabase.from("parking_reservations").insert([
+        {
+        profile_id: profileId,
+        car_num: carNum,
+        visit_type: "DAILY",
+        start_date: dateISO,
+        end_date: dateISO,
+        },
+    ]);
+    if (error) throw error;
+    return true;
 };
 
-//입주민 페이지 장기차량등록(장기:PERIOD)
-export const createPeriodReservation =async ({
+/**
+ * ✅ [입주민 장기 방문 등록 페이지]
+ * - 기간 방문 차량
+ *
+ * ✅ 사용 예시
+ * await createPeriodReservation({
+ *   profileId: profile.id,
+ *   carNum,
+ *   startDateISO,
+ *   endDateISO,
+ *   purpose
+ * });
+ */
+export const createPeriodReservation = async ({
     profileId,
     carNum,
     startDateISO,
     endDateISO,
-    purpose
-}) => {
-const payload = {
-    profile_id: profileId,
-    car_num: carNum,
-    visit_type:"PERIOD",
-    start_date: startDateISO,
-    end_date: endDateISO,
-    purpose:purpose
-};
-const { error } =await supabase.from("parking_reservations").insert([payload]);
-if (error) throw error;
-return true;
-};
+    purpose,
+    }) => {
+    const { error } = await supabase.from("parking_reservations").insert([
+        {
+        profile_id: profileId,
+        car_num: carNum,
+        visit_type: "PERIOD",
+        start_date: startDateISO,
+        end_date: endDateISO,
+        purpose,
+        },
+    ]);
+    if (error) throw error;
+    return true;
+    };
 
-// 입주민 페이지 & 상가페이지 추가차량등록 ->사용자가 입력창에 ‘명의자’를 적게는 하지만, DB에는 저장하지 않고 그 값은 화면에서만 잠깐 쓰거나 검증만 하고 버립니다.
-export const updateAddCar =async ({ profileId, addCarNum }) => {
-const { error } =await supabase
-    .from("profiles")
-    .update({add_car: addCarNum })
-    .eq("id", profileId);
+/* =====================================================
+공통 - 추가 차량
+===================================================== */
 
-if (error)throw error;
-return true;
-};
-
-//입주민 페이지, 상가페이지 실시간 차량 -> parkingAPI.js
-
-//상가페이지
-//상가페이지 주차할인권 발금, 주차 할인권 정산
-
-
-
-
-
-
-//입주민 마이페이지
 /**
- * ✅ 방문차량 목록 조회 (입주민/상가 공용)
- * - status, car_num
- * - entry_time, exit_time (parking_logs에서)
- * - is_favorite (입주민만 UI 사용, 상가는 무시 가능)
+ * ✅ [입주민 / 상가 페이지]
+ * - 추가 차량 번호 1대 등록
+ *
+ * ✅ 사용 예시
+ * await updateAddCar({ profileId: profile.id, addCarNum });
+ */
+export const updateAddCar = async ({ profileId, addCarNum }) => {
+    const { error } = await supabase
+        .from("profiles")
+        .update({ add_car: addCarNum })
+        .eq("id", profileId);
+
+    if (error) throw error;
+    return true;
+};
+
+/* =====================================================
+상가 - 할인권 발급 / 정산
+===================================================== */
+
+const UNIT_PRICE = 1500;
+
+/**
+ * ✅ [상가 할인권 발급 페이지]
+ * - 30분 = 할인권 1장
+ *
+ * ✅ 사용 예시
+ * await issueDiscount({
+ *   storeProfileId: profile.id,
+ *   carNum,
+ *   minutes: 60
+ * });
+ */
+export const issueDiscount = async ({ storeProfileId, minutes }) => {
+    const qty = minutes / 30;
+    const { data } = await supabase
+        .from("parking_discounts")
+        .select("discount_sum")
+        .eq("profile_id", storeProfileId)
+        .maybeSingle();
+    const next = (data?.discount_sum ?? 0) + qty;
+    const { error } = await supabase
+        .from("parking_discounts")
+        .upsert({ profile_id: storeProfileId, discount_sum: next }, { onConflict: "profile_id" });
+    if (error) throw error;
+    return true;
+};
+
+/**
+ * ✅ [상가 정산 페이지]
+ * - 할인권 수량 + 금액 계산
+ *
+ * ✅ 사용 예시
+ * const summary = await fetchDiscountSummary(profile.id);
+ */
+export const fetchDiscountSummary = async (storeProfileId) => {
+    const { data } = await supabase
+        .from("parking_discounts")
+        .select("discount_sum, created_at")
+        .eq("profile_id", storeProfileId)
+        .maybeSingle();
+        const qty = data?.discount_sum ?? 0;
+        return {
+        qty,
+        settlement_date: data?.created_at?.slice(0, 10) ?? null,
+        unit_price: UNIT_PRICE,
+        total_amount: qty * UNIT_PRICE,
+    };
+};
+
+/* =====================================================
+    입주민 마이페이지 - 방문차량(상가인 마이페이지는 동일하게) / 즐겨찾기
+===================================================== */
+
+/**
+ * ✅ [마이페이지]
+ * - 방문 차량 목록
+ *
+ * ✅ 사용 예시
+ * const list = await fetchVisitCars(profile.id);
  */
 export const fetchVisitCars = async (profileId) => {
-    const { data, error } = await supabase
+    const { data } = await supabase
         .from("parking_reservations")
-        .select(`
-        id,
-        car_num,
-        status,
-        created_at,
-        parking_logs (
-            entry_time,
-            exit_time
-        ),
-        favorite_cars (
-            id
-        )
-        `)
-        .eq("profile_id", profileId)
-        .order("created_at", { ascending: false });
-    if (error) throw error;
+        .select("id, car_num, status, start_date, end_date, favorite_cars(id)")
+        .eq("profile_id", profileId);
     return (data || []).map((row) => ({
         reservation_id: row.id,
         car_num: row.car_num,
-        status: row.status, // READY / EXITED / Unvisited
-        entry_time: row.parking_logs?.[0]?.entry_time ?? null,
-        exit_time: row.parking_logs?.[0]?.exit_time ?? null,
+        status: row.status,
+        start_date: row.start_date?.slice(0, 10),
+        end_date: row.end_date?.slice(0, 10),
         is_favorite: (row.favorite_cars?.length ?? 0) > 0,
     }));
-    };
-
-//즐겨찾기 페이지
-export const fetchFavoriteCars = async (profileId) => {
-    const { data, error } = await supabase
-        .from("favorite_cars")
-        .select("id, car_num, created_at")
-        .eq("profile_id", profileId)
-        .order("created_at", { ascending: false });
-    if (error) throw error;
-    return data;
 };
 
-
-/** ✅ 즐겨찾기 토글 (입주민 전용) 
- * 방문차량 목록에서 사용자가 ★ 를 누르면
-    1️⃣ 아직 즐겨찾기가 아님 :DB에 없음
-    즐겨찾기로 “추가(insert)” 해야 함
-    2️⃣ 이미 즐겨찾기 상태 :DB에 이미 있음
-    즐겨찾기에서 “삭제(delete)” 해야 함
-*/
+/**
+ * ✅ [마이페이지 즐겨찾기]
+ *
+ * ✅ 사용 예시
+ * await toggleFavoriteCar(profile.id, carNum);
+ */
 export const toggleFavoriteCar = async (profileId, carNum) => {
-    // 1) 이미 있는지 확인
-    const { data: existing, error: findError } = await supabase
+    const { data } = await supabase
         .from("favorite_cars")
         .select("id")
         .eq("profile_id", profileId)
         .eq("car_num", carNum)
         .maybeSingle();
-    if (findError) throw findError;
-
-    // 2) 있으면 삭제, 없으면 추가
-    if (existing) {
-        const { error: delError } = await supabase
-        .from("favorite_cars")
-        .delete()
-        .eq("id", existing.id);
-    if (delError) throw delError;
-        return { is_favorite: false };
+    if (data) {
+        await supabase.from("favorite_cars").delete().eq("id", data.id);
     } else {
-        const { error: insError } = await supabase
-        .from("favorite_cars")
-        .insert([{ profile_id: profileId, car_num: carNum }]);
-    if (insError) throw insError;
-        return { is_favorite: true };
+        await supabase.from("favorite_cars").insert([{ profile_id: profileId, car_num: carNum }]);
     }
 };
