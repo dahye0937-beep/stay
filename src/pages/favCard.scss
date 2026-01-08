@@ -33,7 +33,8 @@
     }
     .star {
         position: absolute;
-        transform: translateX(285px);
+        right: 16px;
+        top: 30%;
         width: 28px;
         height: 28px;
         color: var(--color-main-1);

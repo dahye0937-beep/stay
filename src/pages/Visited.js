@@ -1,6 +1,5 @@
 import React from "react";
 import VisitedCards from "./VisitedCards";
-import Logo from "../assets/images/Logo/EGWH_logo.png";
 import "./visited.scss";
 
 const Visited = ({ role }) => {
@@ -79,7 +78,6 @@ const Visited = ({ role }) => {
     const filteredList = visitedList.filter((item) => item.type === role);
     return (
         <div className="visited-page">
-            <img src={Logo} alt="로고" className="logo" />
             <h2>방문했던 차량</h2>
             <p>방문 했던 차량들을 보여드릴게요</p>
             <VisitedCards list={filteredList} />
