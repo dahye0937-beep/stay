@@ -1,7 +1,16 @@
 @use "../../assets/scss/mixin" as *;
 
 header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+    max-width: 530px;
+  z-index: 100;
   .header-top {
+    width: 100%;
+    padding: 1rem;
     @include flex-layout(row, space-between);
     img {
       height: 2.5rem;

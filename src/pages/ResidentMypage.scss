@@ -14,12 +14,8 @@
     background-color: var(--color-main-1);
     border-radius: 0 0 36px 36px;
     padding: 24px 24px 90px;
-    color: #fff;
+    color: var(--color-font-white);
     box-shadow: 0 4px 4px rgba(0,0,0,0.25);
-    .brand-logo{
-        width: 54px;
-        margin-bottom: 20px;
-    }
     //DB 연동 정보 영역
     .mypage-info{
         display: flex;
@@ -27,16 +23,16 @@
         gap: 6px;
         .role{
             @include font-title;
-            color: #fff;
+            color: var(--color-font-white);
         }
         .address{
             @include font-main;
             opacity: 0.9;
-            color: #fff;
+            color: var(--color-font-white);
         }
         .car-number{
             @include font-header;
-            color: #fff;
+            color: var(--color-font-white);
         }
         .parking{
             width: 134px;
@@ -44,7 +40,7 @@
             border-radius: 15px;
             text-align: center;
             font-size: 9px;
-            background-color: #fff;
+            background-color: var(--color-font-white);
             color: #000;
         }
     }
@@ -65,7 +61,7 @@
         border: none;
         font-size: 12px;
         font-weight: 500;
-        background-color: #fff;
+        background-color: var(--color-font-white);
         box-shadow: 0 4px 4px rgba(0,0,0,0.25);
         cursor: pointer;
         transition:  transform 0.15s ease, box-shadow 0.15s ease;
@@ -91,13 +87,13 @@
         border-radius: 15px;
         cursor: pointer;
         background-color: #f2f2f2;
-        color: #000;
+        color: var(--color-font-black);
         font-size: 16px;
         font-weight: 600;
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
         &:hover{
             background-color: var(--color-main-1-hover);
-            color: #fff;
+            color: var(--color-font-white);
         }
     }
 }
@@ -111,7 +107,7 @@
     border: none;
     border-radius: 30px;
     background-color: var(--color-main-1);
-    color: #fff;
+    color: var(--color-font-white);
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
@@ -119,25 +115,5 @@
     &:hover{
         background-color: var(--color-main-1-hover);
         transform: translateY(-1px);
-    }
-}
-
-// 테블릿
-
-// 데스크탑
-@media (min-width: 1440px){
-    .resident-mypage{
-        max-width: 1440px;
-        margin: 0 auto;
-        padding: 32px 24px;
-        display: grid;
-        grid-template-columns: 1fr 420px 1fr;
-        column-gap: 32px;
-        align-items: start;
-    }
-    .resident-card,
-    .menu-list,
-    .logout-btn{
-        grid-column: 2;
     }
 }
