@@ -65,7 +65,7 @@ const ParkingGird = () => {
         })
       }
     </div>
-        <div className="color_box">
+        {/* <div className="color_box">
       <div className="r">
         <div></div>
         <p>입주민 등록 차량</p>
@@ -78,7 +78,7 @@ const ParkingGird = () => {
         <div></div>
         <p>정기주차 등록 차량</p>
       </div>
-    </div>
+    </div> */}
   </div>
   </div>
   )
