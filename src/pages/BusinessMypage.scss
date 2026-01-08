@@ -8,9 +8,6 @@
     margin: 0 auto;
     padding: 16px;
     min-height: 100vh;
-    .b-logo{
-        display: none;
-    }
 }
 //상단 카드
 .business-card{
@@ -18,13 +15,9 @@
     background-color: var(--color-main-2);
     border-radius: 0 0 36px 36px;
     padding: 24px 24px 90px;
-    color: #fff;
+    color: var(--color-font-white);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    .stay-logo{
-        width: 54px;
-        margin-bottom: 20px;
-    }
-        //DB 연동 정보 영역
+    //DB 연동 정보 영역
     .mypage-info{
         display: flex;
         flex-direction: column;
@@ -100,7 +93,7 @@
         font-weight: 600;
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
         &:hover{
-            background-color: var(--color-main-1-hover);
+            background-color: var(--color-main-2-hover);
             color: #fff;
         }
     }
@@ -125,7 +118,3 @@
         transform: translateY(-1px);
     }
 }
-
-//태블릿
-
-//데스크탑
