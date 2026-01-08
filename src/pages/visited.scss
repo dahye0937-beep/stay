@@ -1,0 +1,56 @@
+@use "../assets/scss/mixin" as *;
+@use "../assets/scss/variables" as *;
+@use "../assets/scss/global.scss" as *;
+@use "../assets/scss/font.scss" as *;
+
+.visited-card {
+    // 카드 한장
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 48px 16px 16px;
+    height: 110px;
+    border-radius: 32px;
+    background-color: var(--color-sub-2);
+    overflow: hidden;
+    // margin-top: -40px; //카드겹칠 떄
+    margin-top: 15px;
+    box-shadow: 0 -8px 4px rgba(80, 80, 80, 0.2);
+    transition: transform 0.5s ease, opacity 0.3s ease;
+    cursor: pointer;
+    color: var(--color-font);
+    .txt{
+        color: var(--color-bg);
+    }
+}
+
+.visited-page {
+    // 밑 바탕
+    overflow: hidden;
+    width: 375px;
+    height: 80vh;
+    border-radius: 0 0 3rem 3rem;
+    background-color: var(--color-main-3);
+    margin: 0 auto; // 가운데 정렬
+    color: var(--color-bg);
+    > h2 {
+        padding: 1rem 0 1rem 2rem;
+    }
+}
+
+.title {
+    @include font-header;
+    font-weight: 600;
+    color: var(--color-bg);
+}
+
+.star {
+    position: absolute;
+    transform: translateX(285px);
+    width: 28px;
+    height: 28px;
+    color: var(--color-main-1);
+    :hover {
+        color: var(--color-main-1-hover);
+    }
+}

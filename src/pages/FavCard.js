@@ -3,9 +3,11 @@ import { ReactComponent as Star } from "../assets/svg/Star.svg";
 import { useState } from "react";
 
 const FavCard = ({ data, onRemove }) => {
-    const [removing, setRemoving] = useState(false); 
-    if (!data) return null; 
-    const { carNumber, inTime, outTime, status } = data;
+    const [removing, setRemoving] = useState(false);
+    if (!data) return null;
+
+    const { carNumber } = data;
+
     const handleRemove = (e) => {
         e.stopPropagation();
         if (removing) return;
@@ -18,17 +20,10 @@ const FavCard = ({ data, onRemove }) => {
     return (
         <div className={`fav-card ${removing ? "removing" : ""}`}>
             <div className="card-inner">
-                <span className={`status ${status}`}>
-                    {status === "parking" && "방문 중"}
-                    {status === "completed" && "방문 완료"}
-                </span>
-                <p>{carNumber}</p>
-                <div className="time">
-                    <p>입차시간 : {inTime}</p>
-                    <p>{outTime ? `출차 ${outTime}` : "출차시간 : ---"}</p>
-                </div>
+                <p className="car-number">{carNumber}</p>
+                <Star className="star" onClick={handleRemove} />
             </div>
-            <Star className="star" onClick={handleRemove} />
+            
         </div>
     );
 };
