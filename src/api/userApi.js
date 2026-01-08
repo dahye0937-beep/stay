@@ -1,4 +1,4 @@
-import { supabase } from "./supabaseClient";
+import supabase  from "./supabaseClient";
 
 /* =====================================================
 로그인 / 회원가입
