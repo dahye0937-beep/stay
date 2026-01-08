@@ -3,6 +3,8 @@ import BannerSection from "./BannerSection";
 import "./BusinessDashboard.scss";
 import topImg from "../assets/images/Top/Intersect_OR.png";
 import Weather from "../components/Weather";
+import ParkingInfo from "../components/ParkingInfo";
+import ParkingGird from "../components/ParkingGird";
 
 const BusinessDashboard = () => {
   return (
@@ -19,6 +21,8 @@ const BusinessDashboard = () => {
       </div>
       <SystemController role="business" />
       <BannerSection />
+      <ParkingInfo/>
+      <ParkingGird/>
     </section>
   );
 };

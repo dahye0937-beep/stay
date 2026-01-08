@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import Weather from "../components/Weather";
 import topImg from "../assets/images/Top/Intersect_PR.png";
 import "./ResidentDashboard.scss";
+import ParkingInfo from "../components/ParkingInfo";
+import ParkingGird from "../components/ParkingGird";
 
 const ResidentDashboard = () => {
   const navigate = useNavigate();
@@ -33,6 +35,8 @@ const ResidentDashboard = () => {
           즐겨 찾는 차량
         </button>
       </div>
+      <ParkingInfo />
+      <ParkingGird />
     </section>
   );
 };

@@ -6,12 +6,8 @@ header {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  z-index: 100;
-  @include tablet {
     max-width: 530px;
-  }
-  max-width: 530px;
-  background: transparent;
+  z-index: 100;
   .header-top {
     width: 100%;
     padding: 1rem;
