@@ -3,13 +3,15 @@
 
 #banner {
   width: 90%;
-  @include flex-layout(column, center, center, 0.5rem);
-  img {
+  .mb-banner {
     width: 100%;
-    margin: 0 auto;
-    @include tablet {
-      max-width: 530px;
+    @include flex-layout(column, center, center, 0.5rem);
+    img {
+      width: 100%;
+      margin: 0 auto;
     }
-    max-width: 530px;
+    @include desktop {
+      display: none;
+    }
   }
 }

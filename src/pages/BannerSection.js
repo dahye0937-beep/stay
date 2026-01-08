@@ -1,6 +1,7 @@
 import "./BannerSection.scss";
 
 // 이미지 6개 import
+// --- 모바일 배너 ---
 import banner1 from "../assets/images/Banner/MB_Banner_BR.jpg";
 import banner2 from "../assets/images/Banner/MB_Banner_HM.jpg";
 import banner3 from "../assets/images/Banner/MB_Banner_HO.jpg";
@@ -10,6 +11,8 @@ import banner6 from "../assets/images/Banner/MB_Banner_cafe.jpg";
 
 const BannerSection = () => {
   const banners = [banner1, banner2, banner3, banner4, banner5, banner6];
+
+  // --- 모바일 ---
 
   // 1. 배열 복사
   const copyBanners = [...banners];
@@ -24,9 +27,11 @@ const BannerSection = () => {
 
   return (
     <section id="banner">
-      <img src={selectedBanners[0]} alt="배너 1" />
-      <img src={selectedBanners[1]} alt="배너 2" />
-      <img src={selectedBanners[2]} alt="배너 3" />
+      <div className="mb-banner">
+        <img src={selectedBanners[0]} alt="배너 1" />
+        <img src={selectedBanners[1]} alt="배너 2" />
+        <img src={selectedBanners[2]} alt="배너 3" />
+      </div>
     </section>
   );
 };
