@@ -2,17 +2,8 @@ import React from "react";
 import VisitedCards from "./VisitedCards";
 import Logo from "../assets/images/Logo/EGWH_logo.png";
 import "./visited.scss";
-import { useState } from "react";
 
 const Visited = ({ role }) => {
-    const [favList, setFavList] = useState([]);
-    const handleAddFav = (item) => {
-        // 중복 방지
-        const exists = favList.some((fav) => fav.carNumber === item.carNumber);
-        if (exists) return;
-
-        setFavList((prev) => [...prev, item]);
-    };
     const visitedList = [
         {
             id: 1,
@@ -70,12 +61,27 @@ const Visited = ({ role }) => {
             carNumber: "54아6789",
             visitedAt: "2025-12-31",
         },
+        {
+            id: 9,
+            type: "resident",
+            name: "최은지",
+            carNumber: "54아6789",
+            visitedAt: "2025-12-31",
+        },
+        {
+            id: 10,
+            type: "business",
+            storeName: "육회바른연어",
+            carNumber: "90사2345",
+            visitedAt: "2026-01-01",
+        },
     ];
     const filteredList = visitedList.filter((item) => item.type === role);
     return (
         <div className="visited-page">
             <img src={Logo} alt="로고" className="logo" />
             <h2>방문했던 차량</h2>
+            <p>방문 했던 차량들을 보여드릴게요</p>
             <VisitedCards list={filteredList} />
         </div>
     );
