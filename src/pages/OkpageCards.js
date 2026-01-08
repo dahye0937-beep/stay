@@ -1,13 +1,14 @@
+import React from "react";
 import OkpageCard from "./OkpageCard";
+import AnimatedList from "./AnimatedList";
 
 const OkpageCards = ({ list }) => {
-    if (!list || list.length === 0) return <p>승인 요청이 없습니다.</p>;
-
     return (
         <div className="okpage-card-list">
-            {list.map((item) => (
-                <OkpageCard key={item.id} data={item} />
-            ))}
+            <AnimatedList
+                items={list}
+                renderItem={(item) => <OkpageCard key={item.id} data={item} />}
+            />
         </div>
     );
 };

@@ -35,8 +35,9 @@
     background-color: var(--color-main-3);
     margin: 0 auto; // 가운데 정렬
     color: var(--color-bg);
+    padding: 1rem;
     >h1{
-        padding: 1rem 0 1rem 2rem;
+        padding: 4rem 0 1rem 2rem;
     }
 }
 .status-badge{
@@ -55,11 +56,7 @@
     padding: 0 0 0 1.5rem;
 }
 // 로고 고정
-.logo {
-    width: 70px;
-    padding: 1rem 0 0 1rem;
-    // right: 0;
-}
+
 .store-name{
     @include font-header;
     font-weight: 600;
