@@ -11,7 +11,7 @@ import {
     fetchDiscountSummary,
     fetchVisitCars,
     toggleFavoriteCar,
-    } from "../api/userAPI";
+    } from "../api/userApi";
 
 /* =====================================================
     1) Context 채널 만들기 
