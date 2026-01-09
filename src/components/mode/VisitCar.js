@@ -4,15 +4,57 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Car.scss";
+import {
+  createDailyReservation,
+  createPeriodReservation,
+} from "../../api/userApi";
 
-const VisitCar = () => {
-  const [carNumber, setCarNumber] = useState(""); // 차량번호
-  const [visitDate, setVisitDate] = useState(null); // 방문날짜 (Date 객체)
-  const [reason, setReason] = useState(""); // 방문사유
+const VisitCar = ({ profile }) => {
+  // profile = loginProfile 결과로 받은 profile 객체
+  const [carNumber, setCarNumber] = useState("");
+  const [visitDate, setVisitDate] = useState(null);
+  const [reason, setReason] = useState("");
 
-  // 새로고침 방지
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!carNumber || !visitDate) {
+      alert("차량 번호와 방문 날짜를 입력해주세요.");
+      return;
+    }
+
+    const dateISO = visitDate.toISOString().slice(0, 10);
+
+    try {
+      // ✅ 장기 방문 (사유 있음)
+      if (reason.trim()) {
+        await createPeriodReservation({
+          profileId: profile.id,
+          carNum: carNumber,
+          startDateISO: dateISO,
+          endDateISO: dateISO, // 현재는 하루 기준
+          purpose: reason,
+        });
+      } 
+      // ✅ 당일 방문
+      else {
+        await createDailyReservation({
+          profileId: profile.id,
+          carNum: carNumber,
+          dateISO,
+        });
+      }
+
+      alert("등록 성공");
+
+      // 초기화
+      setCarNumber("");
+      setVisitDate(null);
+      setReason("");
+    } catch (err) {
+      console.error(err);
+      alert("등록 실패");
+    }
   };
 
   return (
@@ -38,7 +80,7 @@ const VisitCar = () => {
       </div>
 
       <div className="input-group">
-        <label>방문 사유 * 장기 등록 시에만 적어주세요</label>
+        <label>방문 사유 (장기 방문 시)</label>
         <input
           type="text"
           value={reason}
@@ -48,7 +90,7 @@ const VisitCar = () => {
       </div>
 
       <div className="btn">
-        <button>차량 등록</button>
+        <button type="submit">차량 등록</button>
       </div>
     </form>
   );
