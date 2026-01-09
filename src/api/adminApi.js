@@ -1,4 +1,4 @@
-import { supabase } from "./supabaseClient";
+import  supabase  from "./supabaseClient";
 
     /* =====================================================
     ✅ 관리자 공통 상수

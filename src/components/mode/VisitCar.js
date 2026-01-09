@@ -4,6 +4,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Car.scss";
+import { createDailyReservation } from "../../api/userApi";
 
 const VisitCar = () => {
   const [carNumber, setCarNumber] = useState(""); // 차량번호
@@ -11,8 +12,26 @@ const VisitCar = () => {
   const [reason, setReason] = useState(""); // 방문사유
 
   // 새로고침 방지
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!carNumber || !visitDate) {
+      alert("차량 번호와 방문 날짜를 입력해주세요.");
+      return;
+    }
+
+    // 0000-00-00 식으로 supabase에서 보이게
+    const dateISO = visitDate.toISOString().slice(0, 10);
+    try {
+      await createDailyReservation({
+        profileId: "TEST_PROFILE_ID",
+        carNum: carNumber,
+        dateISO,
+      });
+      alert("등록 성공");
+    } catch (err) {
+      console.error(err);
+      alert("등록 실패");
+    }
   };
 
   return (

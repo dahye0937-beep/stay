@@ -26,12 +26,16 @@ const SaleCar = () => {
       </div>
       <div className="input-group">
         <label>할인권 선택</label>
-        <input
-          type="text"
+        <select
           value={carSale}
           placeholder="할인권 시간을 선택해주세요"
           onChange={(e) => setCarSale(e.target.value)}
-        />
+        >
+          <option value="">할인권 시간을 선택해주세요</option>
+          <option value="30">1시간</option>
+          <option value="60">1시간 30분</option>
+          <option value="120">2시간</option>
+        </select>
       </div>
 
       <div className="btn">
