@@ -1,0 +1,132 @@
+    .signup-wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 60px 16px;
+    background: #fff;
+    }
+
+    .su-back {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    border: 0;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+    }
+
+    .su-type {
+    width: min(520px, 92%);
+    margin-bottom: 20px;
+    }
+
+    .su-type-btn {
+    width: 100%;
+    height: 70px;
+    border-radius: 18px;
+    border: 0;
+    background: #f2f2f2;
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    }
+
+    .su-caret.open {
+    transform: rotate(180deg);
+    }
+
+    .su-type-menu {
+    margin-top: 10px;
+    background: #f5f5f5;
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    }
+
+    .su-type-menu button {
+    height: 56px;
+    border: 0;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    }
+    .su-type-menu button:hover {
+    background: #ededed;
+    }
+
+    .su-form {
+    width: min(520px, 92%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    }
+
+    /* ✅ input + 2줄 텍스트를 한 박스 안에 */
+    .su-field {
+    position: relative;
+    width: 100%;
+    height: 72px;
+    border-radius: 18px;
+    background: #f2f2f2;
+    overflow: hidden;
+    }
+
+    /* input은 투명 배경 + 아래쪽 여백(텍스트 들어갈 자리) */
+    .su-input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: none;
+    background: transparent;
+    padding: 22px 18px 14px;
+    font-size: 18px;
+    }
+
+    /* ✅ 두 줄 텍스트(오버레이) */
+    .su-overlay {
+    position: absolute;
+    left: 18px;
+    top: 14px;
+    right: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    pointer-events: none; /* 클릭 방해 X */
+    }
+
+    .su-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    }
+
+    .su-helper {
+    font-size: 14px;
+    color: #9a9a9a;
+    }
+
+    /* ✅ 클릭(포커스)했을 때 + 값이 들어가면 오버레이 숨김 */
+    .su-field:focus-within .su-overlay,
+    .su-field.has-value .su-overlay {
+    display: none;
+    }
+
+    .su-submit {
+    margin-top: 14px;
+    align-self: flex-end;
+    width: 140px;
+    height: 44px;
+    border-radius: 22px;
+    border: 0;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    }

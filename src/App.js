@@ -72,7 +72,7 @@ const App = () => {
           <Route path="Control" element={<ControlPage />}></Route>
         </Routes>
         {/* 임시버튼 */}
-        <TempButtons />
+        {/* <TempButtons /> */}
       </HashRouter>
     </AppProvider>
   );
