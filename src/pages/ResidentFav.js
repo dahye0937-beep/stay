@@ -1,22 +1,31 @@
 // --- 입주민 즐겨찾기 페이지 ---
+import { useEffect } from "react";
+import { useUser } from "../contexts/UserContext";
 import FavCards from "./FavCards.js";
 import "./favcards.scss";
 
 const ResidentFav = () => {
-    const favList = Array.from({ length: 10 }, (_, i) => ({
-        id: i,
-        carNumber: `12가${3000 + i}`,
-        inTime: "10:20",
-        outTime: null,
-        status: "completed", 
-    }));
+    const { visitCars, fetchVisitCarsList } = useUser();
+    console.log("visitCars:", visitCars);
+
+    // 페이지 진입할 때 즐겨찾기 목록 fetch
+    useEffect(() => {
+        fetchVisitCarsList();
+    }, []);
+
     return (
         <div className="residentfav">
             <div className="residentfav-inner">
                 <h1>즐겨찾는 방문차량</h1>
                 <p>즐겨찾기 한 차량들을 보여드릴게요.</p>
             </div>
-            <FavCards list={favList} />
+
+            {/* 방문차량이 비어있을 때 처리 */}
+            {visitCars?.length === 0 ? (
+                <p className="empty">등록된 즐겨찾기 차량이 없습니다.</p>
+            ) : (
+                <FavCards list={visitCars} />
+            )}
         </div>
     );
 };
