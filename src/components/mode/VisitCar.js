@@ -1,19 +1,13 @@
-// --- 방문 차량 등록 ---
-
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Car.scss";
-import {
-  createDailyReservation,
-  createPeriodReservation,
-} from "../../api/userApi";
+import { createDailyReservation } from "../../api/userApi";
 
 const VisitCar = ({ profile }) => {
-  // profile = loginProfile 결과로 받은 profile 객체
   const [carNumber, setCarNumber] = useState("");
   const [visitDate, setVisitDate] = useState(null);
-  const [reason, setReason] = useState("");
+  const [reason, setReason] = useState(""); // 장기 등록에서만 사용
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,24 +20,11 @@ const VisitCar = ({ profile }) => {
     const dateISO = visitDate.toISOString().slice(0, 10);
 
     try {
-      // ✅ 장기 방문 (사유 있음)
-      if (reason.trim()) {
-        await createPeriodReservation({
-          profileId: profile.id,
-          carNum: carNumber,
-          startDateISO: dateISO,
-          endDateISO: dateISO, // 현재는 하루 기준
-          purpose: reason,
-        });
-      } 
-      // ✅ 당일 방문
-      else {
-        await createDailyReservation({
-          profileId: profile.id,
-          carNum: carNumber,
-          dateISO,
-        });
-      }
+      await createDailyReservation({
+        profileId: profile.id,
+        carNum: carNumber,
+        dateISO,
+      });
 
       alert("등록 성공");
 
@@ -52,7 +33,7 @@ const VisitCar = ({ profile }) => {
       setVisitDate(null);
       setReason("");
     } catch (err) {
-      console.error(err);
+      console.error("방문 차량 등록 실패:", err);
       alert("등록 실패");
     }
   };
@@ -84,7 +65,7 @@ const VisitCar = ({ profile }) => {
         <input
           type="text"
           value={reason}
-          placeholder="방문 사유를 적어주세요"
+          placeholder="장기 등록 페이지에서 사용됩니다"
           onChange={(e) => setReason(e.target.value)}
         />
       </div>

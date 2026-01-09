@@ -37,7 +37,7 @@ const BusinessMypage = () => {
         {/* 카드 버튼 */}
         <div className="mypage-actions">
           <button onClick={()=> alert("추후 업데이트 예정입니다.")}>차량 정보 수정</button>
-          <button>문의 하기</button>
+          <button onClick={()=>alert("권한이 없습니다.")}>문의 하기</button>
           <button onClick={()=> alert("추후 업데이트 예정입니다.")}>이용 가이드</button>
         </div>
       </section>
