@@ -6,9 +6,9 @@ const SalePage = () => {
     const settlementList = [
         {
             id: 1,
-            status: "정산 완료",
+                    status: "정산 완료",
             storeName: "온담 감자탕",
-            period: "2026.12.01 ~ 2026.12.31",
+                    period: "2026.12.01 ~ 2026.12.31",
             ticketCount: 514,
             totalAmount: 514 * 2500, // 1,285,000원
         },
@@ -19,8 +19,8 @@ const SalePage = () => {
             period: "2026.12.01 ~ 2026.12.31",
             ticketCount: 322,
             totalAmount: 322 * 2500, // 805,000원
-        },
-        {
+                },
+                {
             id: 3,
             status: "정산 완료",
             storeName: "카페 루프탑",
@@ -30,13 +30,13 @@ const SalePage = () => {
         },
         {
             id: 4,
-            status: "정산 완료",
-            storeName: "동네 피자집",
+                    status: "정산 완료",
+                    storeName: "동네 피자집",
             period: "2026.12.05 ~ 2026.12.31",
-            ticketCount: 256,
+                    ticketCount: 256,
             totalAmount: 256 * 2500, // 640,000원
-        },
-        {
+                },
+                {
             id: 5,
             status: "정산 미완료",
             storeName: "마루 초밥",
@@ -46,7 +46,7 @@ const SalePage = () => {
         },
         {
             id: 6,
-            status: "정산 완료",
+                    status: "정산 완료",
             storeName: "고기굽는 날",
             period: "2026.12.15 ~ 2026.12.31",
             ticketCount: 147,
@@ -56,7 +56,7 @@ const SalePage = () => {
             id: 7,
             status: "정산 미완료",
             storeName: "달빛 포차",
-            period: "2026.12.01 ~ 2026.12.31",
+                    period: "2026.12.01 ~ 2026.12.31",
             ticketCount: 289,
             totalAmount: 289 * 2500, // 722,500원
         },
